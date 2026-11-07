@@ -147,4 +147,11 @@ app.MapControllers();
 
 app.MapGet("/debug/cors", (IConfiguration config) =>
     config.GetSection("AllowedOrigins").Get<string[]>() ?? ["EMPTY"]);
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<HomeLocalStorageDbContext>();
+    db.Database.Migrate();
+}
+
 app.Run();
