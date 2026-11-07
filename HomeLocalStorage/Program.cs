@@ -80,13 +80,20 @@ builder.Services.AddEndpointsApiExplorer();
         }
     });
 }*///);
+builder.Services.AddDbContext<HomeLocalStorageDbContext>(options =>
+{
+    var connString = builder.Configuration.GetConnectionString(nameof(HomeLocalStorageDbContext));
 
-builder.Services.AddDbContext<HomeLocalStorageDbContext>(
-    options =>
+    // Конвертируем postgresql:// URL в формат Npgsql если нужно
+    if (connString != null && connString.StartsWith("postgresql://"))
     {
-        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(HomeLocalStorageDbContext)));
+        var uri = new Uri(connString);
+        var userInfo = uri.UserInfo.Split(':');
+        connString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
     }
-    );
+
+    options.UseNpgsql(connString);
+});
 
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<JwtService>();
