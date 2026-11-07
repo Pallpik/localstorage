@@ -45,7 +45,7 @@ builder.WebHost.ConfigureKestrel(options =>
 
 
 builder.Services.AddControllers();
-
+builder.Services.AddCors();
 
 
 builder.Services.AddEndpointsApiExplorer();
