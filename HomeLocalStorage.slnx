@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="HomeLocalStorage.Core/HomeLocalStorage.Core.csproj" />
+  <Project Path="HomeLocalStorage.DataAccess/HomeLocalStorage.DataAccess.csproj" />
+  <Project Path="HomeLocalStorage.Services/HomeLocalStorage.Services.csproj" />
+  <Project Path="HomeLocalStorage/HomeLocalStorage.csproj" />
+</Solution>

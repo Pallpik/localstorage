@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: homelocalstorage-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 011101
+      POSTGRES_DB: homelocalstorage_db
+    ports:
+      - "5432:5432"
+    volumes:
+      # Эта строчка связывает папку ./pgdata в проекте с базой внутри контейнера
+      - ./pgdata:/var/lib/postgresql/data

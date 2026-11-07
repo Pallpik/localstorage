@@ -1,0 +1,24 @@
+# .NET build output
+**/bin/
+**/obj/
+*.user
+
+# Секреты — локальный конфиг с паролями
+**/appsettings.Development.json
+
+# Frontend
+frontend/homecloud/node_modules/
+frontend/homecloud/dist/
+frontend/backup/
+
+# База данных — локальные данные postgres
+pgdata/
+HomeLocalStorage/Storage/
+
+# IDE
+.vs/
+.vscode/
+
+# Мусор
+structure.txt
+*.slnx.user
