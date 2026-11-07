@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 
-const BASE = `https://localhost:7219`
+const BASE = import.meta.env.VITE_API_URL ?? `https://localhost:7219`
 
 console.log(BASE)
 
