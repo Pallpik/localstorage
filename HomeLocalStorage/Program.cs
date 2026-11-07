@@ -137,5 +137,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
+app.MapGet("/debug/cors", (IConfiguration config) =>
+    config.GetSection("AllowedOrigins").Get<string[]>() ?? ["EMPTY"]);
 app.Run();
